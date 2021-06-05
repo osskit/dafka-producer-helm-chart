@@ -1,0 +1,26 @@
+name: kafka-producer
+port: &port 3000
+replicaCount: 2
+image: osskit/dafka-producer:1.0.0
+usePrometheus: true
+
+livenessProbe:
+  httpGet:
+    path: /isAlive
+    port: *port
+readinessProbe:
+  httpGet:
+    path: /isAlive
+    port: *port
+
+resources:
+  requests:
+    cpu: '400m'
+    memory: '400Mi'
+  limits:
+    cpu: '800m'
+    memory: '800Mi'
+
+metrics:
+  enabled: true
+  path: /metrics 
