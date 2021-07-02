@@ -6,6 +6,8 @@ on:
       - '.github/**'
       - 'README.md'
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   update-docs:
@@ -22,5 +24,4 @@ jobs:
       - name: Commit bump
         uses: EndBug/add-and-commit@v7
         with:
-            branch: ${{ github.event.pull_request.base.ref }}
             message: 'Regenerate chart README.md'
