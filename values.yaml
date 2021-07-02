@@ -1,26 +1,33 @@
+# -- name for this producer
 name: kafka-producer
-port: &port 3000
+# -- the port to use
+port: 3000
+# -- pod count
 replicaCount: 2
-image: osskit/dafka-producer:1.0.0
-usePrometheus: true
 
-livenessProbe:
-  httpGet:
-    path: /isAlive
-    port: *port
-readinessProbe:
-  httpGet:
-    path: /isAlive
-    port: *port
+image: 
+  # -- the image name to use
+  name: osskit/dafka-producer
+  # -- the image tag to use
+  tag: '1.0.0'
+
+# -- the path for healthchecks, used for liveness and readiness
+healthcheckPath: /isAlive
 
 resources:
   requests:
+    # -- cpu requests
     cpu: '400m'
+    # -- memory requests
     memory: '400Mi'
   limits:
+    # -- cpu limits
     cpu: '800m'
+    # -- memory limits
     memory: '800Mi'
 
 metrics:
+  # -- should prometheus scrape this server
   enabled: true
+  # -- a path prometheus should scrape metrics from
   path: /metrics 

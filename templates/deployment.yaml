@@ -22,7 +22,7 @@ spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
         - name: {{ .Values.name }}
-          image: {{ .Values.image }}
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets-files
@@ -38,7 +38,7 @@ spec:
               value: {{ .Values.readinessTopic }}
             {{- end }}
             - name: USE_PROMETHEUS
-              value: {{ .Values.usePrometheus | squote }}
+              value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}        
             - name: SECURITY_PROTOCOL
@@ -54,9 +54,13 @@ spec:
               value: {{ .Values.auth.truststorePasswordFilePath | squote }} 
             {{- end }}         
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}             
+            httpGet:
+              path: {{ .Values.healthcheckPath | squote }}
+              port: {{ .Values.port }}
           readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}            
+            httpGet:
+              path: {{ .Values.healthcheckPath | squote }}
+              port: {{ .Values.port }}       
           resources:
 {{ toYaml .Values.resources | indent 12 }}      
       volumes:
