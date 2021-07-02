@@ -8,19 +8,16 @@ A Helm Chart for Dafka Producer
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| name | string | `"kafka-producer"` |  |
-| port | int | `3000` |  |
-| replicaCount | int | `2` |  |
-| image | string | `"osskit/dafka-producer:1.0.0"` |  |
-| usePrometheus | bool | `true` |  |
-| livenessProbe.httpGet.path | string | `"/isAlive"` |  |
-| livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.path | string | `"/isAlive"` |  |
-| readinessProbe.httpGet.port | int | `3000` |  |
-| resources.requests.cpu | string | `"400m"` |  |
-| resources.requests.memory | string | `"400Mi"` |  |
-| resources.limits.cpu | string | `"800m"` |  |
-| resources.limits.memory | string | `"800Mi"` |  |
-| metrics.enabled | bool | `true` |  |
-| metrics.path | string | `"/metrics"` |  |
+| name | string | `"kafka-producer"` | name for this producer |
+| port | int | `3000` | the port to use |
+| replicaCount | int | `2` | pod count |
+| image.name | string | `"osskit/dafka-producer"` | the image name to use |
+| image.tag | string | `"1.0.0"` | the image tag to use |
+| healthcheckPath | string | `"/isAlive"` | the path for healthchecks, used for liveness and readiness |
+| resources.requests.cpu | string | `"400m"` | cpu requests |
+| resources.requests.memory | string | `"400Mi"` | memory requests |
+| resources.limits.cpu | string | `"800m"` | cpu limits |
+| resources.limits.memory | string | `"800Mi"` | memory limits |
+| metrics.enabled | bool | `true` | should prometheus scrape this server |
+| metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 
