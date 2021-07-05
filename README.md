@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 0.0.5](https://img.shields.io/badge/Version-0.0.5-informational?style=flat-square)
+![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -12,7 +12,7 @@ A Helm Chart for Dafka Producer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `2` | pod count |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"1.0.0"` | the image tag to use |
+| image.tag | string | `"2.0"` | the image tag to use |
 | healthcheckPath | string | `"/isAlive"` | the path for healthchecks, used for liveness and readiness |
 | resources.requests.cpu | string | `"400m"` | cpu requests |
 | resources.requests.memory | string | `"400Mi"` | memory requests |

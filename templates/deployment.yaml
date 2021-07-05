@@ -25,7 +25,7 @@ spec:
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           volumeMounts:
             - name: kafka-secrets-volume
-              mountPath: /secrets-files
+              mountPath: /secrets
           ports:
             - containerPort: {{ .Values.port }}
           env:
@@ -45,14 +45,30 @@ spec:
               value: SASL_SSL
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername | squote }}        
+            {{- if .Values.auth.useOpaqueSecrets}}
+            - name: SASL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-kafka-producer
+                  key: SASL_PASSWORD
+            {{- else }}                  
             - name: SASL_PASSWORD_FILE_PATH
               value: {{ .Values.auth.saslPasswordFilePath| squote }}
-            {{- if and (.Values.auth.truststoreFilePath) (.Values.auth.truststorePasswordFilePath) }}
+            {{- end }}
+            {{- if .Values.auth.truststore }}
             - name: TRUSTSTORE_FILE_PATH
-              value: {{ .Values.auth.truststoreFilePath | squote }} 
+              value: /secrets/truststore
+            {{- if .Values.auth.useOpaqueSecrets}}
+            - name: TRUSTSTORE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Release.Name }}-kafka-producer
+                  key: TRUSTSTORE_PASSWORD
+            {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.truststorePasswordFilePath | squote }} 
-            {{- end }}         
+              value: /secrets/TRUSTSTORE_PASSWORD                  
+            {{- end }}
+            {{- end }}
           livenessProbe:
             httpGet:
               path: {{ .Values.healthcheckPath | squote }}
