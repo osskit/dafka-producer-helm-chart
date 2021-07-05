@@ -23,6 +23,7 @@ spec:
       containers:
         - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          imagePullPolicy: Always
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets
