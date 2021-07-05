@@ -1,4 +1,4 @@
-# dafka-producer-helm-chart
+# dafka-producer
 
 ![Version: 0.1.0](https://img.shields.io/badge/Version-0.1.0-informational?style=flat-square)
 
@@ -20,4 +20,9 @@ A Helm Chart for Dafka Producer
 | resources.limits.memory | string | `"800Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
+| auth.saslUsername | string | `nil` | sasl username |
+| auth.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
+| auth.useOpaqueSecrets | bool | `true` | mount GCP secrets to Opaque secrets |
+| auth.truststore.truststoreResource | string | `nil` | gcp secret resource for truststore file |
+| auth.truststore.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
 
