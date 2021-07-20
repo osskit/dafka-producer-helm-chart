@@ -85,7 +85,7 @@ spec:
               port: {{ .Values.port }}       
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-{{if not .Values.auth.saslPassword }}
+{{ if not .Values.auth.saslPassword }}
       volumes:
         - name: kafka-secrets-volume
           csi:
