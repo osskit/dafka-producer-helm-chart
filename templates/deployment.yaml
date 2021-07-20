@@ -24,9 +24,11 @@ spec:
         - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: Always
+{{ if not .Values.auth.saslPassword }}
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets
+{{ end }}
           ports:
             - containerPort: {{ .Values.port }}
           env:
