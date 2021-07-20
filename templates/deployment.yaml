@@ -45,8 +45,11 @@ spec:
             - name: SECURITY_PROTOCOL
               value: SASL_SSL
             - name: SASL_USERNAME
-              value: {{ .Values.auth.saslUsername | squote }}        
-            {{- if .Values.auth.useOpaqueSecrets}}
+              value: {{ .Values.auth.saslUsername | squote }}
+            {{- if .Values.auth.saslPassword }}
+            - name: SASL_PASSWORD
+              value: {{ .Values.auth.saslPassword | squote }}
+            {{- else if .Values.auth.useOpaqueSecrets }}
             - name: SASL_PASSWORD
               valueFrom:
                 secretKeyRef:
