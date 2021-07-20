@@ -24,9 +24,11 @@ spec:
         - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: Always
+{{ if not .Values.auth.saslPassword }}
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets
+{{ end }}
           ports:
             - containerPort: {{ .Values.port }}
           env:
@@ -82,7 +84,8 @@ spec:
               path: {{ .Values.healthcheckPath | squote }}
               port: {{ .Values.port }}       
           resources:
-{{ toYaml .Values.resources | indent 12 }}      
+{{ toYaml .Values.resources | indent 12 }}
+{{ if not .Values.auth.saslPassword }}
       volumes:
         - name: kafka-secrets-volume
           csi:
@@ -90,3 +93,4 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: {{ .Release.Name }}-kafka-producer
+{{ end }
