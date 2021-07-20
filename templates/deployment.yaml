@@ -93,4 +93,4 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: {{ .Release.Name }}-kafka-producer
-{{ end }
+{{ end }}
