@@ -44,8 +44,8 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}        
-            - name: SECURITY_PROTOCOL
-              value: SASL_SSL
+            - name: USE_SASL_AUTH
+              value: 'true'
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername | squote }}
             {{- if .Values.auth.saslPassword }}
