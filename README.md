@@ -21,7 +21,6 @@ A Helm Chart for Dafka Producer
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.saslUsername | string | `nil` | sasl username |
-| auth.saslPassword | string | `nil` | sasl password |
 | auth.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
 | auth.useOpaqueSecrets | bool | `true` | mount GCP secrets to Opaque secrets |
 | auth.truststore.truststoreResource | string | `nil` | gcp secret resource for truststore file |
