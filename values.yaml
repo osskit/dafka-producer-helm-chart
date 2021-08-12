@@ -42,8 +42,6 @@ auth:
     useOpaqueSecrets: true
     # -- should use truststore
     useTrustsore: false
-    # -- csi secrets provider
-    provider:
     # -- gcp configurtion
     gcp:
       # -- gcp secret resource for sasl password
