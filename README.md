@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 0.1.6](https://img.shields.io/badge/Version-0.1.6-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -21,8 +21,19 @@ A Helm Chart for Dafka Producer
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.saslUsername | string | `nil` | sasl username |
-| auth.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
-| auth.useOpaqueSecrets | bool | `true` | mount GCP secrets to Opaque secrets |
-| auth.truststore.truststoreResource | string | `nil` | gcp secret resource for truststore file |
-| auth.truststore.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
+| auth.saslPassword | string | `nil` | sasl password (not encrypted) |
+| auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
+| auth.secrets.useTrustsore | bool | `false` | should use truststore |
+| auth.secrets.provider | string | `nil` | csi secrets provider |
+| auth.secrets.gcp | object | `{"saslPasswordResource":null,"truststorePasswordResource":null,"truststoreResource":null}` | gcp configurtion |
+| auth.secrets.gcp.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
+| auth.secrets.gcp.truststoreResource | string | `nil` | gcp secret resource for truststore file |
+| auth.secrets.gcp.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
+| auth.secrets.vault | object | `{"saslPasswordSecretKey":null,"saslPasswordSecretPath":null,"truststorePasswordSecretKey":null,"truststorePasswordSecretPath":null,"truststoreSecretKey":null,"truststoreSecretPath":null}` | vault configurtion |
+| auth.secrets.vault.saslPasswordSecretPath | string | `nil` | vault secret path for sasl password |
+| auth.secrets.vault.saslPasswordSecretKey | string | `nil` | vault secret key for sasl password |
+| auth.secrets.vault.truststoreSecretPath | string | `nil` | vault secret path for truststore file |
+| auth.secrets.vault.truststoreSecretKey | string | `nil` | vault secret key for truststore file |
+| auth.secrets.vault.truststorePasswordSecretPath | string | `nil` | vault secret path for truststore password |
+| auth.secrets.vault.truststorePasswordSecretKey | string | `nil` | vault secret key for truststore password |
 
