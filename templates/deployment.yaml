@@ -46,7 +46,7 @@ spec:
               value: SASL_SSL
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername | squote }}        
-            {{- if .Values.auth.useOpaqueSecrets}}
+            {{- if .Values.auth.secrets.useOpaqueSecrets}}
             - name: SASL_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -56,10 +56,10 @@ spec:
             - name: SASL_PASSWORD_FILE_PATH
               value: {{ .Values.auth.saslPasswordFilePath| squote }}
             {{- end }}
-            {{- if .Values.auth.truststore }}
+            {{- if .Values.auth.secrets.useTruststore }}
             - name: TRUSTSTORE_FILE_PATH
               value: /secrets/truststore
-            {{- if .Values.auth.useOpaqueSecrets}}
+            {{- if .Values.auth.secrets.useOpaqueSecrets}}
             - name: TRUSTSTORE_PASSWORD
               valueFrom:
                 secretKeyRef:
