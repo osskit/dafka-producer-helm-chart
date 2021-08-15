@@ -35,12 +35,30 @@ metrics:
 auth:
   # -- sasl username
   saslUsername:
-   # -- gcp secret resource for sasl password
-  saslPasswordResource:
-   # -- mount GCP secrets to Opaque secrets
-  useOpaqueSecrets: true
-  truststore:
-     # -- gcp secret resource for truststore file
-    truststoreResource:
-     # -- gcp secret resource for truststore password
-    truststorePasswordResource:
+  # -- sasl password (not encrypted)
+  saslPassword:
+  secrets:
+    # -- should mount secrets to opaque secrets
+    useOpaqueSecrets: true
+    # -- should use truststore
+    useTrustsore: false
+    gcp:
+      # -- gcp secret resource for sasl password
+      saslPasswordResource:
+      # -- gcp secret resource for truststore file
+      truststoreResource:
+      # -- gcp secret resource for truststore password
+      truststorePasswordResource:
+    vault:
+      # -- vault secret path for sasl password
+      saslPasswordSecretPath:
+      # -- vault secret key for sasl password
+      saslPasswordSecretKey:
+      # -- vault secret path for truststore file
+      truststoreSecretPath:
+      # -- vault secret key for truststore file
+      truststoreSecretKey:
+      # -- vault secret path for truststore password
+      truststorePasswordSecretPath:
+      # -- vault secret key for truststore password
+      truststorePasswordSecretKey:
