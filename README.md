@@ -24,12 +24,9 @@ A Helm Chart for Dafka Producer
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
 | auth.secrets.useTrustsore | bool | `false` | should use truststore |
-| auth.secrets.provider | string | `nil` | csi secrets provider |
-| auth.secrets.gcp | object | `{"saslPasswordResource":null,"truststorePasswordResource":null,"truststoreResource":null}` | gcp configurtion |
 | auth.secrets.gcp.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
 | auth.secrets.gcp.truststoreResource | string | `nil` | gcp secret resource for truststore file |
 | auth.secrets.gcp.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
-| auth.secrets.vault | object | `{"saslPasswordSecretKey":null,"saslPasswordSecretPath":null,"truststorePasswordSecretKey":null,"truststorePasswordSecretPath":null,"truststoreSecretKey":null,"truststoreSecretPath":null}` | vault configurtion |
 | auth.secrets.vault.saslPasswordSecretPath | string | `nil` | vault secret path for sasl password |
 | auth.secrets.vault.saslPasswordSecretKey | string | `nil` | vault secret key for sasl password |
 | auth.secrets.vault.truststoreSecretPath | string | `nil` | vault secret path for truststore file |
