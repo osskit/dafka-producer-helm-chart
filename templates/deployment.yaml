@@ -33,7 +33,7 @@ spec:
             - containerPort: {{ .Values.port }}
           env:
             - name: PORT
-              value: {{ .Values.port | squote }}  
+              value: {{ .Values.port | squote }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
             {{- if .Values.readinessTopic }}
@@ -43,7 +43,7 @@ spec:
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
-              value: {{ .Values.port | squote }}        
+              value: {{ .Values.port | squote }}
             - name: USE_SASL_AUTH
               value: 'true'
             - name: SASL_USERNAME
@@ -57,7 +57,7 @@ spec:
                 secretKeyRef:
                   name: {{ .Release.Name }}-kafka-producer
                   key: SASL_PASSWORD
-            {{- else }}                  
+            {{- else }}
             - name: SASL_PASSWORD_FILE_PATH
               value: {{ .Values.auth.saslPasswordFilePath| squote }}
             {{- end }}
@@ -72,7 +72,7 @@ spec:
                   key: TRUSTSTORE_PASSWORD
             {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: /secrets/TRUSTSTORE_PASSWORD                  
+              value: /secrets/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
           livenessProbe:
@@ -82,7 +82,7 @@ spec:
           readinessProbe:
             httpGet:
               path: {{ .Values.healthcheckPath | squote }}
-              port: {{ .Values.port }}       
+              port: {{ .Values.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
 {{ if not .Values.auth.saslPassword }}
