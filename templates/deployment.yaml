@@ -24,10 +24,12 @@ spec:
         - name: {{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: Always
-{{ if not .Values.auth.saslPassword }}
+{{ if .Values.auth.enabled }}
+  {{ if not .Values.auth.saslPassword }}
           volumeMounts:
             - name: kafka-secrets-volume
               mountPath: /secrets
+  {{ end }}
 {{ end }}
           ports:
             - containerPort: {{ .Values.port }}
@@ -45,7 +47,8 @@ spec:
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
             - name: USE_SASL_AUTH
-              value: 'true'
+              value: {{ .Values.auth.enabled | squote }}
+        {{- if .Values.auth.enabled }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername | squote }}
             {{- if .Values.auth.saslPassword }}
@@ -75,6 +78,7 @@ spec:
               value: /secrets/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
+        {{- end }}
           livenessProbe:
             httpGet:
               path: {{ .Values.healthcheckPath | squote }}
@@ -85,7 +89,8 @@ spec:
               port: {{ .Values.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
-{{ if not .Values.auth.saslPassword }}
+{{ if .Values.auth.enabled }}
+  {{ if not .Values.auth.saslPassword }}
       volumes:
         - name: kafka-secrets-volume
           csi:
@@ -93,4 +98,5 @@ spec:
             readOnly: true
             volumeAttributes:
               secretProviderClass: {{ .Release.Name }}-kafka-producer
+  {{ end }}
 {{ end }}
