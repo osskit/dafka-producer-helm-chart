@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -20,6 +20,7 @@ A Helm Chart for Dafka Producer
 | resources.limits.memory | string | `"800Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
+| auth.secretProviderClassName | string | `nil` | secret provider class name |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
