@@ -33,6 +33,8 @@ metrics:
   path: /metrics
   
 auth:
+  # -- secret provider class name
+  secretProviderClassName:
   # -- sasl username
   saslUsername:
   # -- sasl password (not encrypted)
