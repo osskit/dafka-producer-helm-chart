@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square)
+![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -14,10 +14,10 @@ A Helm Chart for Dafka Producer
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
 | image.tag | string | `"2.0"` | the image tag to use |
 | healthcheckPath | string | `"/isAlive"` | the path for healthchecks, used for liveness and readiness |
-| resources.requests.cpu | string | `"1m"` | cpu requests |
-| resources.requests.memory | string | `"1Mi"` | memory requests |
-| resources.limits.cpu | string | `"50m"` | cpu limits |
-| resources.limits.memory | string | `"100Mi"` | memory limits |
+| resources.requests.cpu | string | `"50m"` | cpu requests |
+| resources.requests.memory | string | `"100Mi"` | memory requests |
+| resources.limits.cpu | string | `"100m"` | cpu limits |
+| resources.limits.memory | string | `"200Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
