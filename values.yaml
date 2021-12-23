@@ -17,14 +17,14 @@ healthcheckPath: /isAlive
 resources:
   requests:
     # -- cpu requests
-    cpu: '1m'
+    cpu: '50m'
     # -- memory requests
-    memory: '1Mi'
+    memory: '100Mi'
   limits:
     # -- cpu limits
-    cpu: '50m'
+    cpu: '100m'
     # -- memory limits
-    memory: '100Mi'
+    memory: '200Mi'
 
 metrics:
   # -- should prometheus scrape this server
