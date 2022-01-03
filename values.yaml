@@ -22,9 +22,9 @@ resources:
     memory: '100Mi'
   limits:
     # -- cpu limits
-    cpu: '100m'
+    cpu: '200m'
     # -- memory limits
-    memory: '200Mi'
+    memory: '400Mi'
 
 metrics:
   # -- should prometheus scrape this server
