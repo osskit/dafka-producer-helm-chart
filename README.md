@@ -16,8 +16,8 @@ A Helm Chart for Dafka Producer
 | healthcheckPath | string | `"/isAlive"` | the path for healthchecks, used for liveness and readiness |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
-| resources.limits.cpu | string | `"100m"` | cpu limits |
-| resources.limits.memory | string | `"200Mi"` | memory limits |
+| resources.limits.cpu | string | `"200m"` | cpu limits |
+| resources.limits.memory | string | `"400Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
