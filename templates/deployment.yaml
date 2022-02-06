@@ -46,13 +46,13 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
-            {{ - if .Values.correlation.enforce }}
+            {{ - if .Values.correlationId.enforce }}
             - name: ENFORCE_CORRELATION_ID
-              value: {{ .Values.correlation.enforce | squote }}
+              value: {{ .Values.correlationId.enforce | squote }}
             {{ - end }}
-            {{ - if .Values.correlation.header }}
-            - name: CORRELATION_HEADER
-              value: {{ .Values.correlation.header | squote }}
+            {{ - if .Values.correlationId.header }}
+            - name: CORRELATION_ID_HEADER
+              value: {{ .Values.correlationId.header | squote }}
             {{ - end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
