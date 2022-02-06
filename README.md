@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -20,6 +20,8 @@ A Helm Chart for Dafka Producer
 | resources.limits.memory | string | `"400Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
+| correlation.enforce | bool | `true` | should enforce correlation header being present in the record |
+| correlation.header | string | `"x-correlation-id"` | the header of the correlation id |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
