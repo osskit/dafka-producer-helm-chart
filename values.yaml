@@ -31,7 +31,13 @@ metrics:
   enabled: true
   # -- a path prometheus should scrape metrics from
   path: /metrics
-  
+
+correlation:
+  # -- should enforce correlation header being present in the record
+  enforce: true
+  # -- the header of the correlation id
+  header: 'x-correlation-id'
+
 auth:
   # -- should use authentication
   enabled: false
