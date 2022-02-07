@@ -9,7 +9,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: '2.0'
+  tag: '2.1'
 
 # -- the path for healthchecks, used for liveness and readiness
 healthcheckPath: /isAlive
@@ -31,7 +31,13 @@ metrics:
   enabled: true
   # -- a path prometheus should scrape metrics from
   path: /metrics
-  
+
+correlationId:
+  # -- should enforce correlation header being present in the record
+  enforce: true
+  # -- the header of the correlation id
+  header: 'x-correlation-id'
+
 auth:
   # -- should use authentication
   enabled: false

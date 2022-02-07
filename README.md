@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 1.0.1](https://img.shields.io/badge/Version-1.0.1-informational?style=flat-square)
+![Version: 1.1.0](https://img.shields.io/badge/Version-1.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -12,7 +12,7 @@ A Helm Chart for Dafka Producer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"2.0"` | the image tag to use |
+| image.tag | string | `"2.1"` | the image tag to use |
 | healthcheckPath | string | `"/isAlive"` | the path for healthchecks, used for liveness and readiness |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
@@ -20,6 +20,8 @@ A Helm Chart for Dafka Producer
 | resources.limits.memory | string | `"400Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
+| correlationId.enforce | bool | `true` | should enforce correlation header being present in the record |
+| correlationId.header | string | `"x-correlation-id"` | the header of the correlation id |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
