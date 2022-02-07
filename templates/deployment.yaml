@@ -47,11 +47,11 @@ spec:
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
             {{ - if .Values.correlationId.enforce }}
-            - name: ENFORCE_CORRELATION_ID
-              value: {{ .Values.correlationId.enforce | squote }}
+            - name: USE_CORRELATION_ID
+              value: {{ .Values.correlationId.enabled | squote }}
             {{ - end }}
             {{ - if .Values.correlationId.header }}
-            - name: CORRELATION_ID_HEADER
+            - name: CORRELATION_ID_HEADER_KEY
               value: {{ .Values.correlationId.header | squote }}
             {{ - end }}
             - name: USE_SASL_AUTH
