@@ -34,7 +34,7 @@ metrics:
 
 correlationId:
   # -- should enforce correlation header being present in the record
-  enabled: true
+  enforce: true
   # -- the header of the correlation id
   header: 'x-correlation-id'
 
