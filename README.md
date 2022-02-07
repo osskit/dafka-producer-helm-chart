@@ -20,7 +20,7 @@ A Helm Chart for Dafka Producer
 | resources.limits.memory | string | `"400Mi"` | memory limits |
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
-| correlationId.enabled | bool | `true` | should enforce correlation header being present in the record |
+| correlationId.enforce | bool | `true` | should enforce correlation header being present in the record |
 | correlationId.header | string | `"x-correlation-id"` | the header of the correlation id |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
