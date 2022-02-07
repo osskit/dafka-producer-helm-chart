@@ -46,11 +46,11 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
-            {{ - if .Values.correlationId.enforce }}
+            {{- if .Values.correlationId.enforce }}
             - name: ENFORCE_CORRELATION_ID
               value: {{ .Values.correlationId.enforce | squote }}
             {{ - end }}
-            {{ - if .Values.correlationId.header }}
+            {{- if .Values.correlationId.header }}
             - name: CORRELATION_ID_HEADER_KEY
               value: {{ .Values.correlationId.header | squote }}
             {{ - end }}
