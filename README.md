@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 1.1.1](https://img.shields.io/badge/Version-1.1.1-informational?style=flat-square)
+![Version: 1.1.2](https://img.shields.io/badge/Version-1.1.2-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 

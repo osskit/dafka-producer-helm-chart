@@ -49,11 +49,11 @@ spec:
             {{- if .Values.correlationId.enforce }}
             - name: ENFORCE_CORRELATION_ID
               value: {{ .Values.correlationId.enforce | squote }}
-            {{ - end }}
+            {{- end }}
             {{- if .Values.correlationId.header }}
             - name: CORRELATION_ID_HEADER_KEY
               value: {{ .Values.correlationId.header | squote }}
-            {{ - end }}
+            {{- end }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
         {{- if .Values.auth.enabled }}
