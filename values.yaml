@@ -9,7 +9,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: '3.1'
+  tag: '3.2'
 
 # -- the path for healthchecks, used for liveness and readiness
 healthcheckPath: /isAlive
