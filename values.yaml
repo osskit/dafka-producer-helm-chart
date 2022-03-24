@@ -1,11 +1,11 @@
 # -- name for this producer
 name: kafka-producer
 # -- the port to use
-port: 3000
+port: &port 3000
 # -- pod count
 replicaCount: 1
 
-image: 
+image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
