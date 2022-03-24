@@ -80,13 +80,9 @@ spec:
             {{- end }}
         {{- end }}
           livenessProbe:
-            httpGet:
-              path: {{ .Values.healthcheckPath | squote }}
-              port: {{ .Values.port }}
+{{ toYaml .Values.livenessProbe | indent 12 }}
           readinessProbe:
-            httpGet:
-              path: {{ .Values.healthcheckPath | squote }}
-              port: {{ .Values.port }}
+{{ toYaml .Values.readinessProbe | indent 12 }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
 {{ if .Values.auth.enabled }}
