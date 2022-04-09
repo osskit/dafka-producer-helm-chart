@@ -21,7 +21,7 @@ spec:
     spec:
       serviceAccountName: {{ .Values.serviceAccountName }}
       containers:
-        - name: {{ .Values.name }}
+        - name: {{ .Release.Name }}-{{ .Values.name }}
           image: {{ .Values.image.name }}:{{ .Values.image.tag }}
           imagePullPolicy: Always
 {{ if .Values.auth.enabled }}
