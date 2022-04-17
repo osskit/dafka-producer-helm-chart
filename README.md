@@ -12,11 +12,10 @@ A Helm Chart for Dafka Producer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"3.2"` | the image tag to use |
-| livenessProbe.initialDelaySeconds | int | `60` |  |
-| livenessProbe.httpGet.path | string | `"/healthcheck"` | the path for liveness check |
+| image.tag | string | `"4.0"` | the image tag to use |
+| livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.path | string | `"/healthcheck"` | the path for readiness check |
+| readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
