@@ -9,18 +9,17 @@ image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: '3.2'
+  tag: '4.0'
 
 livenessProbe:
-  initialDelaySeconds: 60
   httpGet:
     # -- the path for liveness check
-    path: /healthcheck
+    path: /alive
     port: *port
 readinessProbe:
   httpGet:
     # -- the path for readiness check
-    path: /healthcheck
+    path: /ready
     port: *port
 
 resources:
