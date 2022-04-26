@@ -13,6 +13,7 @@ A Helm Chart for Dafka Producer
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
 | image.tag | string | `"4.0"` | the image tag to use |
+| livenessProbe.initialDelaySeconds | int | `60` |  |
 | livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
