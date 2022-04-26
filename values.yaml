@@ -12,10 +12,12 @@ image:
   tag: '4.0'
 
 livenessProbe:
+  initialDelaySeconds: 60
   httpGet:
     # -- the path for liveness check
     path: /alive
     port: *port
+    
 readinessProbe:
   httpGet:
     # -- the path for readiness check
