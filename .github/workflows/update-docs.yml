@@ -1,14 +1,13 @@
 name: Update docs
 
 on:
-  push:
-    paths:
-      - 'charts'
-    branches: [main]
   pull_request:
+    paths:
+      - 'charts/**'
+      - '!charts/**/README.md'
     branches: [main]
   workflow_dispatch:
-  
+
 jobs:
   update-docs:
     runs-on: ubuntu-latest
@@ -16,7 +15,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ secrets.REPO_TOKEN }}
-          
+
       - name: Run helm-docs
         working-directory: charts/dafka-producer
         run: |
@@ -27,4 +26,4 @@ jobs:
       - name: Commit bump
         uses: EndBug/add-and-commit@v7
         with:
-            message: 'Regenerate chart README.md [skip-ci]'
+          message: 'Regenerate chart README.md [skip-ci]'
