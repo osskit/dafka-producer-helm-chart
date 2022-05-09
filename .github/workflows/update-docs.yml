@@ -2,9 +2,8 @@ name: Update docs
 
 on:
   push:
-    paths-ignore:
-      - '.github/**'
-      - 'README.md'
+    paths:
+      - 'charts'
     branches: [main]
   pull_request:
     branches: [main]
@@ -14,11 +13,12 @@ jobs:
   update-docs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           token: ${{ secrets.REPO_TOKEN }}
           
       - name: Run helm-docs
+        working-directory: charts/dafka-producer
         run: |
           GOBIN=$PWD GO111MODULE=on go get github.com/norwoodj/helm-docs/cmd/helm-docs
           ./helm-docs --sort-values-order file
@@ -27,4 +27,4 @@ jobs:
       - name: Commit bump
         uses: EndBug/add-and-commit@v7
         with:
-            message: 'Regenerate chart README.md'
+            message: 'Regenerate chart README.md [skip-ci]'
