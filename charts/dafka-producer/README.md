@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 3.0.2](https://img.shields.io/badge/Version-3.0.2-informational?style=flat-square)
+![Version: 3.1.0](https://img.shields.io/badge/Version-3.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -18,6 +18,7 @@ A Helm Chart for Dafka Producer
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
+| passthroughHeaders | string | `"x-request-id,x-b3-traceid,x-b3-spanid,x-b3-parentspanid,x-b3-sampled,x-b3-flags,x-ot-span-context,ce-time,ce-id,ce-type,ce-source,ce-specversion"` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
