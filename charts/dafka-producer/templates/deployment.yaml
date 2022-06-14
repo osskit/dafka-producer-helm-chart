@@ -46,6 +46,8 @@ spec:
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
               value: {{ .Values.port | squote }}
+            - name: PASSTHROUGH_HEADERS
+              value: {{ .Values.passthroughHeaders }}
             - name: USE_SASL_AUTH
               value: {{ .Values.auth.enabled | squote }}
         {{- if .Values.auth.enabled }}

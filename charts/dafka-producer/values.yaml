@@ -24,6 +24,8 @@ readinessProbe:
     path: /ready
     port: *port
 
+passthroughHeaders: x-request-id,x-b3-traceid,x-b3-spanid,x-b3-parentspanid,x-b3-sampled,x-b3-flags,x-ot-span-context,ce-time,ce-id,ce-type,ce-source,ce-specversion
+
 resources:
   requests:
     # -- cpu requests
