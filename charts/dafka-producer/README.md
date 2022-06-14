@@ -18,7 +18,7 @@ A Helm Chart for Dafka Producer
 | livenessProbe.httpGet.port | int | `3000` |  |
 | readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
 | readinessProbe.httpGet.port | int | `3000` |  |
-| passthroughHeaders | string | `"x-request-id,x-b3-traceid,x-b3-spanid,x-b3-parentspanid,x-b3-sampled,x-b3-flags,x-ot-span-context,ce-time,ce-id,ce-type,ce-source,ce-specversion"` |  |
+| passthroughHeaders | string | `"x-request-id,x-b3-traceid,x-b3-spanid,x-b3-parentspanid,x-b3-sampled,x-b3-flags,x-ot-span-context,ce_time,ce_id,ce_type,ce_source,ce_specversion"` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
