@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 3.0.2](https://img.shields.io/badge/Version-3.0.2-informational?style=flat-square)
+![Version: 4.0.0](https://img.shields.io/badge/Version-4.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -12,7 +12,7 @@ A Helm Chart for Dafka Producer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"4.0"` | the image tag to use |
+| image.tag | string | `"5.0"` | the image tag to use |
 | livenessProbe.initialDelaySeconds | int | `60` |  |
 | livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
 | livenessProbe.httpGet.port | int | `3000` |  |
