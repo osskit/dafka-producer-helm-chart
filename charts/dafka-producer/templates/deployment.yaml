@@ -80,9 +80,14 @@ spec:
             {{- end }}
         {{- end }}
           livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}
+            initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
+            httpGet:
+              path: /alive
+              port: {{ .Values.port }}
           readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}
+            httpGet:
+              path: /ready
+              port: {{ .Values.port }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
 {{ if .Values.auth.enabled }}
