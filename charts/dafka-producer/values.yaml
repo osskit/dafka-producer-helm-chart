@@ -5,6 +5,9 @@ port: &port 3000
 # -- pod count
 replicaCount: 1
 
+# -- the url of the kafka broker
+broker: 
+
 image:
   # -- the image name to use
   name: osskit/dafka-producer
@@ -13,16 +16,6 @@ image:
 
 livenessProbe:
   initialDelaySeconds: 60
-  httpGet:
-    # -- the path for liveness check
-    path: /alive
-    port: *port
-    
-readinessProbe:
-  httpGet:
-    # -- the path for readiness check
-    path: /ready
-    port: *port
 
 resources:
   requests:
