@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 4.0.0](https://img.shields.io/badge/Version-4.0.0-informational?style=flat-square)
+![Version: 5.0.0](https://img.shields.io/badge/Version-5.0.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -11,13 +11,10 @@ A Helm Chart for Dafka Producer
 | name | string | `"kafka-producer"` | name for this producer |
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
+| broker | string | `nil` | the url of the kafka broker |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
 | image.tag | string | `"5.0"` | the image tag to use |
 | livenessProbe.initialDelaySeconds | int | `60` |  |
-| livenessProbe.httpGet.path | string | `"/alive"` | the path for liveness check |
-| livenessProbe.httpGet.port | int | `3000` |  |
-| readinessProbe.httpGet.path | string | `"/ready"` | the path for readiness check |
-| readinessProbe.httpGet.port | int | `3000` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
 | resources.limits.cpu | string | `"200m"` | cpu limits |
