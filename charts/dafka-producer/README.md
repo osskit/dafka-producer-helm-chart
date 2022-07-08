@@ -23,12 +23,17 @@ A Helm Chart for Dafka Producer
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
+| auth.saslMechanism | string | `"plain"` | sasl mechanism (plain or scram) |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
 | auth.secrets.useTrustsore | bool | `false` | should use truststore |
 | auth.secrets.gcp.saslPasswordResource | string | `nil` | gcp secret resource for sasl password |
 | auth.secrets.gcp.truststoreResource | string | `nil` | gcp secret resource for truststore file |
 | auth.secrets.gcp.truststorePasswordResource | string | `nil` | gcp secret resource for truststore password |
+| auth.secrets.aws.objectName | string | `nil` | aws objectName in secret manager (should be json object) |
+| auth.secrets.aws.saslPasswordPath | string | `nil` | path in the secret manager object for the sasl password |
+| auth.secrets.aws.truststorePath | string | `nil` | path in the secret manager object for truststore |
+| auth.secrets.aws.truststorePasswordPath | string | `nil` | path in the secret manager object for truststore password |
 | auth.secrets.vault.saslPasswordSecretPath | string | `nil` | vault secret path for sasl password |
 | auth.secrets.vault.saslPasswordSecretKey | string | `nil` | vault secret key for sasl password |
 | auth.secrets.vault.truststoreSecretPath | string | `nil` | vault secret path for truststore file |
