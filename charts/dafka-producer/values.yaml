@@ -41,7 +41,7 @@ auth:
   # -- sasl username
   saslUsername:
   # -- sasl mechanism (plain or scram)
-  saslMechanism: plain
+  saslMechanism: PLAIN
   # -- sasl password (not encrypted)
   saslPassword:
   secrets:
