@@ -51,6 +51,8 @@ spec:
         {{- if .Values.auth.enabled }}
             - name: SASL_USERNAME
               value: {{ .Values.auth.saslUsername | squote }}
+            - name: SASL_MECHANISM
+              value: {{ .Values.auth.saslMechanism }}                
             {{- if .Values.auth.saslPassword }}
             - name: SASL_PASSWORD
               value: {{ .Values.auth.saslPassword | squote }}

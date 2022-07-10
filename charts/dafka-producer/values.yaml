@@ -40,6 +40,8 @@ auth:
   enabled: false
   # -- sasl username
   saslUsername:
+  # -- sasl mechanism (plain or scram)
+  saslMechanism: PLAIN
   # -- sasl password (not encrypted)
   saslPassword:
   secrets:
@@ -54,6 +56,15 @@ auth:
       truststoreResource:
       # -- gcp secret resource for truststore password
       truststorePasswordResource:
+    aws:
+      # -- aws objectName in secret manager (should be json object)
+      objectName:
+      # -- path in the secret manager object for the sasl password
+      saslPasswordPath:
+      # -- path in the secret manager object for truststore
+      truststorePath:
+      # -- path in the secret manager object for truststore password
+      truststorePasswordPath:        
     vault:
       # -- vault secret path for sasl password
       saslPasswordSecretPath:
