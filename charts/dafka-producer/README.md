@@ -23,7 +23,7 @@ A Helm Chart for Dafka Producer
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
-| auth.saslMechanism | string | `"plain"` | sasl mechanism (plain or scram) |
+| auth.saslMechanism | string | `"PLAIN"` | sasl mechanism (plain or scram) |
 | auth.saslPassword | string | `nil` | sasl password (not encrypted) |
 | auth.secrets.useOpaqueSecrets | bool | `true` | should mount secrets to opaque secrets |
 | auth.secrets.useTrustsore | bool | `false` | should use truststore |
