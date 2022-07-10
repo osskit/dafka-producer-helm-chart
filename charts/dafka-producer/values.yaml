@@ -40,7 +40,7 @@ auth:
   enabled: false
   # -- sasl username
   saslUsername:
-  # -- sasl mechanism (plain or scram)
+  # -- sasl mechanism (PLAIN or SCRAM)
   saslMechanism: PLAIN
   # -- sasl password (not encrypted)
   saslPassword:
