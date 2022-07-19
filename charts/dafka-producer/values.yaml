@@ -57,14 +57,12 @@ auth:
       # -- gcp secret resource for truststore password
       truststorePasswordResource:
     aws:
-      # -- aws objectName in secret manager (should be json object)
-      objectName:
-      # -- path in the secret manager object for the sasl password
-      saslPasswordPath:
-      # -- path in the secret manager object for truststore
-      truststorePath:
-      # -- path in the secret manager object for truststore password
-      truststorePasswordPath:        
+      # -- aws secret object name for sasl password
+      saslPasswordObjectName:
+      # -- aws secret object name for truststore
+      saslTruststoreObjectName:
+      # -- aws secret object name for truststore password
+      saslTruststorePasswordObjectName:
     vault:
       # -- vault secret path for sasl password
       saslPasswordSecretPath:
