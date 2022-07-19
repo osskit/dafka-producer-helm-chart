@@ -64,11 +64,11 @@ spec:
                   key: SASL_PASSWORD
             {{- else }}
             - name: SASL_PASSWORD_FILE_PATH
-              value: {{ .Values.auth.saslPasswordFilePath| squote }}
+              value: /secrets-files/SASL_PASSWORD
             {{- end }}
             {{- if .Values.auth.secrets.useTruststore }}
             - name: TRUSTSTORE_FILE_PATH
-              value: /secrets/truststore
+              value: /secrets-files/TRUSTSTORE
             {{- if .Values.auth.secrets.useOpaqueSecrets}}
             - name: TRUSTSTORE_PASSWORD
               valueFrom:
