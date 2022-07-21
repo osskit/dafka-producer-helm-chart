@@ -28,7 +28,7 @@ spec:
   {{ if not .Values.auth.saslPassword }}
           volumeMounts:
             - name: kafka-secrets-volume
-              mountPath: /secrets
+              mountPath: /secrets-files
   {{ end }}
 {{ end }}
           ports:
