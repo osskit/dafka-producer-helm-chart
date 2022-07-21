@@ -77,7 +77,7 @@ spec:
                   key: TRUSTSTORE_PASSWORD
             {{- else }}
             - name: TRUSTSTORE_PASSWORD_FILE_PATH
-              value: /secrets/TRUSTSTORE_PASSWORD
+              value: /secrets-files/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
         {{- end }}
