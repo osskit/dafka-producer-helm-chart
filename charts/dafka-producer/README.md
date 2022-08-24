@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 6.0.4](https://img.shields.io/badge/Version-6.0.4-informational?style=flat-square)
+![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -13,7 +13,7 @@ A Helm Chart for Dafka Producer
 | replicaCount | int | `1` | pod count |
 | broker | string | `nil` | the url of the kafka broker |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"5.0"` | the image tag to use |
+| image.tag | string | `"5.1"` | the image tag to use |
 | livenessProbe.initialDelaySeconds | int | `60` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
