@@ -13,7 +13,7 @@ A Helm Chart for Dafka Producer
 | replicaCount | int | `1` | pod count |
 | broker | string | `nil` | the url of the kafka broker |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
-| image.tag | string | `"5.0"` | the image tag to use |
+| image.tag | string | `"5.1"` | the image tag to use |
 | livenessProbe.initialDelaySeconds | int | `60` |  |
 | resources.requests.cpu | string | `"50m"` | cpu requests |
 | resources.requests.memory | string | `"100Mi"` | memory requests |
