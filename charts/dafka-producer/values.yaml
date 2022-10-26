@@ -8,6 +8,9 @@ replicaCount: 1
 # -- the url of the kafka broker
 broker: 
 
+# -- the annotations to add to the deployment
+deploymentAnnotations: 
+
 image:
   # -- the image name to use
   name: osskit/dafka-producer
