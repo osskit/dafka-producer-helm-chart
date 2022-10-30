@@ -1,0 +1,26 @@
+{{- if .Values.kedaScaledObject.enabled }}
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: {{ .Release.Name }}-{{ .Values.name }}
+spec:
+  scaleTargetRef:
+    name: {{ .Release.Name }}-{{ .Values.name }}
+  pollingInterval: 30
+{{- if .Values.kedaScaledObject.minReplicaCount }}
+  minReplicaCount: {{ .Values.kedaScaledObject.minReplicaCount }}
+{{- end }}    
+{{- if .Values.kedaScaledObject.maxReplicaCount }}
+  maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
+{{- end }}  
+  triggers:
+{{- range $topic := .Values.topics}}
+  - type: kafka
+    metadata:
+      bootstrapServers: {{ $.Values.broker }}
+      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
+      topic: {{ $topic }}
+    authenticationRef:
+      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+{{- end }}
+{{- end}}

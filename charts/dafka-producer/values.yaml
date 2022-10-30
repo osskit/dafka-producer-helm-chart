@@ -79,3 +79,11 @@ auth:
       truststorePasswordSecretPath:
       # -- vault secret key for truststore password
       truststorePasswordSecretKey:
+# -- Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration
+kedaScaledObject:
+  # -- set to enabe scaled object support
+  enabled: false
+  # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
+  authenticationRef:
+    # -- The name of the TriggerAuthentication
+    name:      

@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 6.1.0](https://img.shields.io/badge/Version-6.1.0-informational?style=flat-square)
+![Version: 6.4.0](https://img.shields.io/badge/Version-6.4.0-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -12,6 +12,7 @@ A Helm Chart for Dafka Producer
 | port | int | `3000` | the port to use |
 | replicaCount | int | `1` | pod count |
 | broker | string | `nil` | the url of the kafka broker |
+| deploymentAnnotations | string | `nil` | the annotations to add to the deployment |
 | image.name | string | `"osskit/dafka-producer"` | the image name to use |
 | image.tag | string | `"5.1"` | the image tag to use |
 | livenessProbe.initialDelaySeconds | int | `60` |  |
@@ -39,4 +40,8 @@ A Helm Chart for Dafka Producer
 | auth.secrets.vault.truststoreSecretKey | string | `nil` | vault secret key for truststore file |
 | auth.secrets.vault.truststorePasswordSecretPath | string | `nil` | vault secret path for truststore password |
 | auth.secrets.vault.truststorePasswordSecretKey | string | `nil` | vault secret key for truststore password |
+| kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
+| kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
+| kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
+| kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
 
