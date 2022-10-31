@@ -14,7 +14,7 @@ spec:
   maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
 {{- end }}  
   triggers:
-{{- range $topic := .Values.topics}}
+{{- range $topic := .Values.kedaScaledObject.topics}}
   - type: kafka
     metadata:
       bootstrapServers: {{ $.Values.broker }}
