@@ -20,6 +20,7 @@ spec:
       bootstrapServers: {{ $.Values.broker }}
       consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
       topic: {{ $topic }}
+      scaleToZeroOnInvalidOffset: 'true'
     authenticationRef:
       name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
 {{- end }}
