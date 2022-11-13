@@ -94,6 +94,5 @@ serviceMonitor:
   enabled: true
   # -- set labels for the service monitor
   labels: 
-    a: b
   # -- set sample limit for the service monitor
   sampleLimit: 
