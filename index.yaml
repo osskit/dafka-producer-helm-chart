@@ -2,6 +2,14 @@ apiVersion: v1
 entries:
   dafka-producer:
   - apiVersion: v1
+    created: "2022-11-14T13:28:42.568829548Z"
+    description: A Helm Chart for Dafka Producer
+    digest: 3929f309bf7c667b56f10dadd4f15f8aa59d28f9ef173150ce8bf09948dd4001
+    name: dafka-producer
+    urls:
+    - https://github.com/osskit/dafka-producer-helm-chart/releases/download/dafka-producer-6.4.4/dafka-producer-6.4.4.tgz
+    version: 6.4.4
+  - apiVersion: v1
     created: "2022-11-14T09:12:08.799531201Z"
     description: A Helm Chart for Dafka Producer
     digest: 67e2df3be637ab7cccf9c1c27e3ee62d8b0635c0df237c517dec3ec8425c5215
@@ -129,4 +137,4 @@ entries:
     urls:
     - https://github.com/osskit/dafka-producer-helm-chart/releases/download/dafka-producer-3.0.1/dafka-producer-3.0.1.tgz
     version: 3.0.1
-generated: "2022-11-14T09:12:08.7997595Z"
+generated: "2022-11-14T13:28:42.569061547Z"
