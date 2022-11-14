@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 6.4.2](https://img.shields.io/badge/Version-6.4.2-informational?style=flat-square)
+![Version: 6.4.4](https://img.shields.io/badge/Version-6.4.4-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -40,8 +40,13 @@ A Helm Chart for Dafka Producer
 | auth.secrets.vault.truststoreSecretKey | string | `nil` | vault secret key for truststore file |
 | auth.secrets.vault.truststorePasswordSecretPath | string | `nil` | vault secret path for truststore password |
 | auth.secrets.vault.truststorePasswordSecretKey | string | `nil` | vault secret key for truststore password |
-| kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
-| kedaScaledObject.enabled | bool | `false` | set to enabe scaled object support |
+| kedaScaledObject | object | `{"authenticationRef":{"name":null},"enabled":false,"scaleToZeroOnInvalidOffset":false}` | Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration |
+| kedaScaledObject.enabled | bool | `false` | set to enabel scaled object support |
+| kedaScaledObject.scaleToZeroOnInvalidOffset | bool | `false` | enables scaling down to zero pods |
 | kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
 | kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
+| serviceMonitor | object | `{"enabled":true,"labels":null,"sampleLimit":null}` | [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration |
+| serviceMonitor.enabled | bool | `true` | set to enabe service monitor support |
+| serviceMonitor.labels | string | `nil` | set labels for the service monitor |
+| serviceMonitor.sampleLimit | string | `nil` | set sample limit for the service monitor |
 
