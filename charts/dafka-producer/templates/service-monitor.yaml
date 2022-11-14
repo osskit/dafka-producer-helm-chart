@@ -1,0 +1,19 @@
+{{ if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Release.Name }}-kafka-producer
+  {{- if .Values.serviceMonitor.labels }}
+  labels:
+  {{ toYaml .Values.serviceMonitor.labels | nindent 4 }}
+  {{- end }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  endpoints:
+  - port: main
+{{ if .Values.serviceMonitor.sampleLimit }}
+  sampleLimit: {{ .Values.serviceMonitor.sampleLimit }}
+{{ end }}
+{{ end }}

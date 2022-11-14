@@ -87,3 +87,12 @@ kedaScaledObject:
   authenticationRef:
     # -- The name of the TriggerAuthentication
     name:      
+
+# -- [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration
+serviceMonitor:
+  # -- set to enabe service monitor support
+  enabled: true
+  # -- set labels for the service monitor
+  labels: 
+  # -- set sample limit for the service monitor
+  sampleLimit: 
