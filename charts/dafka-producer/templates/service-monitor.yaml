@@ -10,7 +10,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: {{ .Release.Name }}
+      app: {{ .Release.Name }}-{{ .Values.name }}
   endpoints:
   - port: main
 {{ if .Values.serviceMonitor.sampleLimit }}
