@@ -1,6 +1,6 @@
 # dafka-producer
 
-![Version: 6.4.4](https://img.shields.io/badge/Version-6.4.4-informational?style=flat-square)
+![Version: 6.4.5](https://img.shields.io/badge/Version-6.4.5-informational?style=flat-square)
 
 A Helm Chart for Dafka Producer
 
@@ -45,8 +45,8 @@ A Helm Chart for Dafka Producer
 | kedaScaledObject.scaleToZeroOnInvalidOffset | bool | `false` | enables scaling down to zero pods |
 | kedaScaledObject.authenticationRef | object | `{"name":null}` | A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/) |
 | kedaScaledObject.authenticationRef.name | string | `nil` | The name of the TriggerAuthentication |
-| serviceMonitor | object | `{"enabled":true,"labels":null,"sampleLimit":null}` | [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration |
-| serviceMonitor.enabled | bool | `true` | set to enabe service monitor support |
+| serviceMonitor | object | `{"enabled":false,"labels":null,"sampleLimit":null}` | [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration |
+| serviceMonitor.enabled | bool | `false` | set to enable service monitor support |
 | serviceMonitor.labels | string | `nil` | set labels for the service monitor |
 | serviceMonitor.sampleLimit | string | `nil` | set sample limit for the service monitor |
 
