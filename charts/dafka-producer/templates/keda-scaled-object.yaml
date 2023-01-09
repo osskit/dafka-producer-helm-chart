@@ -1,27 +1,48 @@
-{{- if .Values.kedaScaledObject.enabled }}
+{{- if .Values.kedakedaScaledObject.enabled }}
 apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
+kind: kedaScaledObject
 metadata:
   name: {{ .Release.Name }}-{{ .Values.name }}
 spec:
   scaleTargetRef:
     name: {{ .Release.Name }}-{{ .Values.name }}
   pollingInterval: 30
-{{- if .Values.kedaScaledObject.minReplicaCount }}
-  minReplicaCount: {{ .Values.kedaScaledObject.minReplicaCount }}
+{{- if .Values.kedakedaScaledObject.minReplicaCount }}
+  minReplicaCount: {{ .Values.kedakedaScaledObject.minReplicaCount }}
 {{- end }}    
-{{- if .Values.kedaScaledObject.maxReplicaCount }}
-  maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
+{{- if .Values.kedakedaScaledObject.maxReplicaCount }}
+  maxReplicaCount: {{ .Values.kedakedaScaledObject.maxReplicaCount }}
 {{- end }}  
   triggers:
-{{- range $topic := .Values.kedaScaledObject.topics}}
+{{ if .Values.kedaScaledObject.kafka.enabled }}
+{{- range $topic := .Values.kedaScaledObject.kafka.topics}}
   - type: kafka
     metadata:
-      bootstrapServers: {{ $.Values.broker }}
-      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
-      topic: {{ $topic }}
-      scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
+      bootstrapServers: {{ $.Values.kedaScaledObject.kafka.broker }}
+      consumerGroup: {{ $topic.consumerGroup | default $.Release.Name  }}
+      topic: {{ $topic.name }}
+      scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.kafka.scaleToZeroOnInvalidOffset | squote }}
     authenticationRef:
-      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+      name: {{ $.Release.Name }}
 {{- end }}
+{{- end}}
+{{ if .Values.scaledObject.cpu.enabled }}
+  - type: cpu
+    metricType: Utilization 
+    metadata:
+      value: {{ .Values.scaledObject.cpu.value | default 70 | squote }}
+{{- end }}
+{{ if .Values.scaledObject.memory.enabled }}
+  - type: memory
+    metricType: Utilization
+    metadata:
+      value: {{ .Values.scaledObject.memory.value | default 70 | squote }}
+{{- end }}
+{{ if .Values.scaledObject.prometheus.enabled }}
+  - type: prometheus
+    metadata:
+      serverAddress: {{ .Values.scaledObject.prometheus.serverAddress}}
+      metricName: keda_kafka_producer_{{ .Release.Name }}-{{ .Values.name }}
+      threshold: {{ .Values.scaledObject.prometheus.value }}
+      query: {{ .Values.scaledObject.prometheus.query }}
 {{- end}}

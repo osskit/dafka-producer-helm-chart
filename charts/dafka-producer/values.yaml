@@ -6,16 +6,16 @@ port: &port 3000
 replicaCount: 1
 
 # -- the url of the kafka broker
-broker: 
+broker:
 
 # -- the annotations to add to the deployment
-deploymentAnnotations: 
+deploymentAnnotations:
 
 image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: '5.1'
+  tag: "5.1"
 
 livenessProbe:
   initialDelaySeconds: 60
@@ -23,14 +23,14 @@ livenessProbe:
 resources:
   requests:
     # -- cpu requests
-    cpu: '50m'
+    cpu: "50m"
     # -- memory requests
-    memory: '100Mi'
+    memory: "100Mi"
   limits:
     # -- cpu limits
-    cpu: '200m'
+    cpu: "200m"
     # -- memory limits
-    memory: '400Mi'
+    memory: "400Mi"
 
 metrics:
   # -- should prometheus scrape this server
@@ -83,18 +83,45 @@ auth:
 kedaScaledObject:
   # -- set to enabel scaled object support
   enabled: false
-  # -- enables scaling down to zero pods
-  scaleToZeroOnInvalidOffset: false
-  # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
-  authenticationRef:
-    # -- The name of the TriggerAuthentication
-    name:      
-
+  # -- [Apache Kafka Trigger](https://keda.sh/docs/1.4/scalers/apache-kafka/) defintion
+  kafka:
+    # -- enables scaling down to zero pods
+    scaleToZeroOnInvalidOffset: false
+    # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
+    authenticationRef:
+      # -- The name of the TriggerAuthentication
+      name:
+  # -- [CPU Trigger](https://keda.sh/docs/2.9/scalers/cpu/) configuration
+  cpu:
+    # -- set to true to enable
+    enabled: false
+    # -- Threshold in percentil from request
+    value: 70
+  # -- [Memory Trigger](https://keda.sh/docs/2.9/scalers/memory/) configuration
+  memory:
+    # -- set to true to enable
+    enabled: false
+    # -- Threshold in percentil from request
+    value: 70
+  # -- [Prometheus Trigger](https://keda.sh/docs/2.9/scalers/prometheus/) configuration
+  prometheus:
+    # -- set to true to enable
+    enabled: false
+    # -- Prometheus server address
+    serverAddress:
+    # -- The threshold for the metric
+    value:
+    # -- The query to use for metric
+    query:
 # -- [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration
 serviceMonitor:
   # -- set to enable service monitor support
   enabled: false
   # -- set labels for the service monitor
-  labels: 
+  labels:
   # -- set sample limit for the service monitor
-  sampleLimit: 
+  sampleLimit:
+# -- [Pod Distruption Budget](https://kubernetes.io/docs/tasks/run-application/configure-pdb/) configuration
+pdb:
+  # -- Set to true to enable
+  enabled: false
