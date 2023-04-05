@@ -9,19 +9,51 @@ spec:
   pollingInterval: 30
 {{- if .Values.kedaScaledObject.minReplicaCount }}
   minReplicaCount: {{ .Values.kedaScaledObject.minReplicaCount }}
-{{- end }}    
+{{- end }}  
 {{- if .Values.kedaScaledObject.maxReplicaCount }}
   maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
-{{- end }}  
+{{- end }}
   triggers:
-{{- range $topic := .Values.kedaScaledObject.topics}}
+{{ if .Values.kedaScaledObject.kafka.enabled }}
+{{- range $topic := .Values.kedaScaledObject.kafka.topics}}
   - type: kafka
     metadata:
-      bootstrapServers: {{ $.Values.broker }}
-      consumerGroup: {{ $.Values.groupId | default $.Release.Name }}
-      topic: {{ $topic }}
-      scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.scaleToZeroOnInvalidOffset | squote }}
+      bootstrapServers: {{ $.Values.kedaScaledObject.kafka.broker }}
+      consumerGroup: {{ $topic.consumerGroup | default $.Release.Name  }}
+      topic: {{ $topic.name }}
+      scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.kafka.scaleToZeroOnInvalidOffset | squote }}
     authenticationRef:
-      name: {{ $.Values.kedaScaledObject.authenticationRef.name }}
+      name: {{ $.Values.kedaScaledObject.kafka.authenticationRef.name }}
 {{- end }}
-{{- end}}
+{{- end }}
+{{ if .Values.kedaScaledObject.cpu.enabled }}
+  - type: cpu
+    metricType: Utilization 
+    metadata:
+      value: {{ .Values.kedaScaledObject.cpu.value | default 70 | squote }}
+{{- end }}
+{{ if .Values.kedaScaledObject.workload.enabled }}
+  - type: kubernetes-workload
+    metadata:
+      value: {{ .Values.kedaScaledObject.workload.value | default 1 | squote }}
+      podSelector: {{ .Values.kedaScaledObject.workload.podSelector }}
+{{- end }}
+{{ if .Values.kedaScaledObject.memory.enabled }}
+  - type: memory
+    metricType: Utilization
+    metadata:
+      value: {{ .Values.kedaScaledObject.cpu.value | default 70 | squote }}
+{{- end }}
+{{ if .Values.kedaScaledObject.prometheus.enabled }}
+  - type: prometheus
+    metadata:
+      serverAddress: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+      metricName: http_requests_total_{{ .Release.Name }}
+      threshold: {{ .Values.kedaScaledObject.prometheus.value | default 50 | squote }}
+{{ if .Values.kedaScaledObject.prometheus.query }}
+      query: {{ .Values.kedaScaledObject.prometheus.query }}
+{{ else }}
+      query: sum(rate(http_request_duration_seconds_count{job="{{ .Release.Name }}"}[2m]))
+{{ end }}
+{{- end }}
+{{- end }}
