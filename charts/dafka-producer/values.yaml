@@ -6,16 +6,16 @@ port: &port 3000
 replicaCount: 1
 
 # -- the url of the kafka broker
-broker: 
+broker:
 
 # -- the annotations to add to the deployment
-deploymentAnnotations: 
+deploymentAnnotations:
 
 image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: '5.1'
+  tag: "5.1"
 
 livenessProbe:
   initialDelaySeconds: 60
@@ -23,14 +23,14 @@ livenessProbe:
 resources:
   requests:
     # -- cpu requests
-    cpu: '50m'
+    cpu: "50m"
     # -- memory requests
-    memory: '100Mi'
+    memory: "100Mi"
   limits:
     # -- cpu limits
-    cpu: '200m'
+    cpu: "200m"
     # -- memory limits
-    memory: '400Mi'
+    memory: "400Mi"
 
 metrics:
   # -- should prometheus scrape this server
@@ -83,18 +83,33 @@ auth:
 kedaScaledObject:
   # -- set to enabel scaled object support
   enabled: false
-  # -- enables scaling down to zero pods
-  scaleToZeroOnInvalidOffset: false
-  # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
-  authenticationRef:
-    # -- The name of the TriggerAuthentication
-    name:      
+  kafka:
+    # -- set to enable kafka based scaler
+    enabled: false
+    # -- enables scaling down to zero pods
+    scaleToZeroOnInvalidOffset: false
+    # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
+    authenticationRef:
+      # -- The name of the TriggerAuthentication
+      name:
+  # -- set to enable CPU based scaler
+  cpu:
+    enabled: false
+  # -- set to enable Memor based scaler
+  memory:
+    enabled: false
+  # -- set to enable Prometheus based scaler
+  prometheus:
+    enabled: false
+  # -- set to enable Workload based scaler
+  workload:
+    enabled: false
 
 # -- [ServiceMonitor](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#monitoring.coreos.com/v1.serviceMonitor) configuration
 serviceMonitor:
   # -- set to enable service monitor support
   enabled: false
   # -- set labels for the service monitor
-  labels: 
+  labels:
   # -- set sample limit for the service monitor
-  sampleLimit: 
+  sampleLimit:
