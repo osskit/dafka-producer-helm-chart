@@ -11,6 +11,12 @@ broker:
 # -- the annotations to add to the deployment
 deploymentAnnotations:
 
+# -- Batch processing config https://www.conduktor.io/kafka/kafka-producer-batching/
+lingerTimeMs:
+
+# -- Batch processing config https://www.conduktor.io/kafka/kafka-producer-batching/
+batchSize:
+
 image:
   # -- the image name to use
   name: osskit/dafka-producer
