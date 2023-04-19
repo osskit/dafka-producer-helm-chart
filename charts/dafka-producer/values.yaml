@@ -15,7 +15,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: "5.1"
+  tag: "5.2"
 
 livenessProbe:
   initialDelaySeconds: 60
