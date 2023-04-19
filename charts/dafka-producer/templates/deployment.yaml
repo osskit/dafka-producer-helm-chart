@@ -48,6 +48,14 @@ spec:
             - name: READINESS_TOPIC
               value: {{ .Values.readinessTopic }}
             {{- end }}
+            {{- if .Values.lingerTimeMs }}
+            - name: LINGER_TIME_MS
+              value: {{ .Values.lingerTimeMs | squote }}
+            {{- end }}
+            {{- if .Values.batchSize }}
+            - name: BATCH_SIZE
+              value: {{ .Values.batchSize }}
+            {{- end }}
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
