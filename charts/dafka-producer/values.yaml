@@ -88,16 +88,7 @@ auth:
 # -- Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration
 kedaScaledObject:
   # -- set to enabel scaled object support
-  enabled: false
-  kafka:
-    # -- set to enable kafka based scaler
-    enabled: false
-    # -- enables scaling down to zero pods
-    scaleToZeroOnInvalidOffset: false
-    # -- A reference to [TriggerAuthentication](https://keda.sh/docs/2.8/concepts/authentication/)
-    authenticationRef:
-      # -- The name of the TriggerAuthentication
-      name:
+  enabled: true
   # -- set to enable CPU based scaler
   cpu:
     enabled: false
@@ -106,7 +97,7 @@ kedaScaledObject:
     enabled: false
   # -- set to enable Prometheus based scaler
   prometheus:
-    enabled: false
+    enabled: true
   # -- set to enable Workload based scaler
   workload:
     enabled: false
