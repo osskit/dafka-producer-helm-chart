@@ -85,6 +85,7 @@ auth:
       truststorePasswordSecretPath:
       # -- vault secret key for truststore password
       truststorePasswordSecretKey:
+
 # -- Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration
 kedaScaledObject:
   # -- set to enabel scaled object support
@@ -110,3 +111,7 @@ serviceMonitor:
   labels:
   # -- set sample limit for the service monitor
   sampleLimit:
+
+pdb:
+  # -- Set to true to enable
+  enabled: true
