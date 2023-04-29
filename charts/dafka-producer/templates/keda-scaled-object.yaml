@@ -14,18 +14,6 @@ spec:
   maxReplicaCount: {{ .Values.kedaScaledObject.maxReplicaCount }}
 {{- end }}
   triggers:
-{{ if .Values.kedaScaledObject.kafka.enabled }}
-{{- range $topic := .Values.kedaScaledObject.kafka.topics}}
-  - type: kafka
-    metadata:
-      bootstrapServers: {{ $.Values.kedaScaledObject.kafka.broker }}
-      consumerGroup: {{ $topic.consumerGroup | default $.Release.Name  }}
-      topic: {{ $topic.name }}
-      scaleToZeroOnInvalidOffset: {{ $.Values.kedaScaledObject.kafka.scaleToZeroOnInvalidOffset | squote }}
-    authenticationRef:
-      name: {{ $.Values.kedaScaledObject.kafka.authenticationRef.name }}
-{{- end }}
-{{- end }}
 {{ if .Values.kedaScaledObject.cpu.enabled }}
   - type: cpu
     metricType: Utilization 
@@ -47,13 +35,9 @@ spec:
 {{ if .Values.kedaScaledObject.prometheus.enabled }}
   - type: prometheus
     metadata:
-      serverAddress: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
-      metricName: http_requests_total_{{ .Release.Name }}
+      serverAddress: {{ .Values.kedaScaledObject.prometheus.serverAddress | squote }}
+      metricName: produce_success_{{ .Release.Name }}
       threshold: {{ .Values.kedaScaledObject.prometheus.value | default 50 | squote }}
-{{ if .Values.kedaScaledObject.prometheus.query }}
-      query: {{ .Values.kedaScaledObject.prometheus.query }}
-{{ else }}
-      query: sum(rate(http_request_duration_seconds_count{job="{{ .Release.Name }}"}[2m]))
+      query:  sum(rate(produce_success{job="{{ .Release.Name }}-{{ .Values.name }}"}[2m]))
 {{ end }}
-{{- end }}
 {{- end }}
