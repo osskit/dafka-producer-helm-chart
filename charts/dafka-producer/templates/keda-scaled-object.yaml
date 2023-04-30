@@ -38,6 +38,6 @@ spec:
       serverAddress: {{ .Values.kedaScaledObject.prometheus.serverAddress | squote }}
       metricName: produce_success_{{ .Release.Name }}
       threshold: {{ .Values.kedaScaledObject.prometheus.value | default 50 | squote }}
-      query:  sum(rate(produce_success{job="{{ .Release.Name }}-{{ .Values.name }}"}[2m]))
+      query: sum(rate(produce_success{job="{{ .Release.Name }}-{{ .Values.name }}"}[2m]))
 {{ end }}
 {{- end }}

@@ -89,7 +89,7 @@ auth:
 # -- Keda [ScaledObject](https://keda.sh/docs/2.8/concepts/scaling-deployments/) configuration
 kedaScaledObject:
   # -- set to enabel scaled object support
-  enabled: true
+  enabled: false
   # -- set to enable CPU based scaler
   cpu:
     enabled: false
@@ -98,7 +98,7 @@ kedaScaledObject:
     enabled: false
   # -- set to enable Prometheus based scaler
   prometheus:
-    enabled: true
+    enabled: false
   # -- set to enable Workload based scaler
   workload:
     enabled: false
