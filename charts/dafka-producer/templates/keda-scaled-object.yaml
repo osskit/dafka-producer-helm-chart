@@ -30,7 +30,7 @@ spec:
   - type: memory
     metricType: Utilization
     metadata:
-      value: {{ .Values.kedaScaledObject.cpu.value | default 70 | squote }}
+      value: {{ .Values.kedaScaledObject.memory.value | default 70 | squote }}
 {{- end }}
 {{ if .Values.kedaScaledObject.prometheus.enabled }}
   - type: prometheus
