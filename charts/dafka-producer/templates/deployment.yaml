@@ -104,6 +104,7 @@ spec:
             httpGet:
               path: /ready
               port: {{ .Values.port }}
+            periodSeconds: {{ .Values.readinessProbe.periodSeconds | default 10 }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
 {{ if .Values.auth.enabled }}
