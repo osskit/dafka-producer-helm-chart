@@ -33,8 +33,6 @@ resources:
     # -- memory requests
     memory: "100Mi"
   limits:
-    # -- cpu limits
-    cpu: "200m"
     # -- memory limits
     memory: "400Mi"
 
