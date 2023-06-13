@@ -21,7 +21,7 @@ image:
   # -- the image name to use
   name: osskit/dafka-producer
   # -- the image tag to use
-  tag: "7.0"
+  tag: "7.1"
 
 livenessProbe:
   initialDelaySeconds: 60
@@ -118,3 +118,6 @@ pdb:
 readinessProbe:
   # -- How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1.
   periodSeconds: 10
+
+jvmOpts:
+  maxRAMPercentage: 70.0
