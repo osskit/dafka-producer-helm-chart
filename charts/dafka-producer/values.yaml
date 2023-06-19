@@ -123,4 +123,3 @@ readinessProbe:
   periodSeconds: 10
 
 jvmOpts:
-  maxRAMPercentage: 70.0
