@@ -46,7 +46,7 @@ spec:
               value: {{ .Values.broker }}
             {{ if .Values.jvmOpts }}
             - name: JAVA_OPTS
-              value: "-XX:MaxRAMPercentage={{ .Values.jvmOpts.maxRAMPercentage }}{{ if .Values.jvmOpts.activeProcessorCount }} -XX:ActiveProcessorCount={{ .Values.jvmOpts.activeProcessorCount }} {{end}}"
+              value: {{ .Values.jvmOpts | squote }}
             {{ end }}
             {{- if .Values.readinessTopic }}
             - name: READINESS_TOPIC
@@ -114,6 +114,10 @@ spec:
               value: /secrets-files/TRUSTSTORE_PASSWORD
             {{- end }}
             {{- end }}
+            {{ if .Values.maxBlockMS}}
+            - name: MAX_BLOCK_MS
+              value: {{ .Values.maxBlockMS }}
+            {{ end }}
         {{- end }}
           livenessProbe:
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
