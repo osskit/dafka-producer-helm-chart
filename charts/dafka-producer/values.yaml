@@ -42,6 +42,9 @@ metrics:
   # -- a path prometheus should scrape metrics from
   path: /metrics
 
+# -- how long a producer should wait for an ack from Kafka in MS (default: 60 seconds)
+maxBlockMS:
+
 auth:
   # -- should use authentication
   enabled: false
