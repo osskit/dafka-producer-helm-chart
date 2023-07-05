@@ -44,6 +44,16 @@ spec:
               value: {{ .Values.port | squote }}
             - name: KAFKA_BROKER
               value: {{ .Values.broker }}
+            {{ if .values.connectionPool}}
+            {{ if .values.connectionPool.maxIdle}}
+            - name: CONNECTION_POOL_MAX_IDLE_CONNECTIONS
+              value: {{ .values.connectionPool.maxIdle }}
+            {{ end }}
+            {{ if .values.connectionPool.keepAliveDurationMS}}
+            - name: CONNECTION_POOL_KEEP_ALIVE_DURATION_MS
+              value: {{ .values.connectionPool.keepAliveDurationMS }}
+            {{ end }}
+            {{ end }}
             {{ if .Values.jvmOpts }}
             - name: JAVA_OPTS
               value: {{ .Values.jvmOpts | squote }}
