@@ -7,6 +7,8 @@ spec:
   scaleTargetRef:
     name: {{ .Release.Name }}-{{ .Values.name }}
   pollingInterval: 30
+{{- if .Values.scaledObject.cooldownPeriod }}
+  cooldownPeriod: {{ .Values.scaledObject.cooldownPeriod }}  
 {{- if .Values.kedaScaledObject.minReplicaCount }}
   minReplicaCount: {{ .Values.kedaScaledObject.minReplicaCount }}
 {{- end }}  
