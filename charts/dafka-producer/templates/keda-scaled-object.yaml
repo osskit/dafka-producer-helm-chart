@@ -42,6 +42,6 @@ spec:
       metricName: produce_success_{{ .Release.Name }}
       threshold: {{ .Values.kedaScaledObject.prometheus.value | default 50 | squote }}
       activationThreshold: {{ .Values.kedaScaledObject.prometheus.activationThreshold | default 5 | squote }}
-      query: sum(rate(produce_success{job="{{ .Release.Name }}-{{ .Values.name }}"}[2m]))
+      query: sum(rate(producer_success_total{job="{{ .Release.Name }}-{{ .Values.name }}"}[2m]))
 {{ end }}
 {{- end }}
