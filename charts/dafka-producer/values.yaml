@@ -115,7 +115,7 @@ serviceMonitor:
 
 pdb:
   # -- Set to true to enable
-  enabled: true
+  enabled: false
 
 # -- Rediness settings
 readinessProbe:
