@@ -60,22 +60,10 @@ spec:
             - name: BATCH_SIZE
               value: {{ .Values.batchSize }}
             {{- end }}
-             {{- if .Values.blockedThreadDetectionEnabled }}
-            - name: BLOCKED_THREAD_DETECTION_ENABLED
-              value: {{ .Values.blockedThreadDetectionEnabled | squote }}
-            {{- end }}
-            {{- if .Values.cpuStarvationCheckInitialDelayMs }}
-            - name: CPU_STARVATION_CHECK_INITIAL_DELAY_MS
-              value: {{ .Values.cpuStarvationCheckInitialDelayMs | squote }}
-            {{- end }}
-            {{- if .Values.cpuStarvationCheckIntervalMs }}
-            - name: CPU_STARVATION_CHECK_INTERVAL_MS
-              value: {{ .Values.cpuStarvationCheckIntervalMs | squote }}
-            {{- end }}
-            {{- if .Values.cpuStarvationCheckThreshold }}
-            - name: CPU_STARVATION_CHECK_THRESHOLD
-              value: {{ .Values.cpuStarvationCheckThreshold | squote }}
-            {{- end }}
+            {{- if .Values.compressionType }}
+            - name: COMPRESSION_TYPE
+              value: {{ .Values.compressionType }}
+            {{- end }}            
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
