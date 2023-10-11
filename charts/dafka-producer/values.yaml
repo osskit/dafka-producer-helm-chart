@@ -17,6 +17,9 @@ lingerTimeMs:
 # -- Batch processing config https://www.conduktor.io/kafka/kafka-producer-batching/
 batchSize:
 
+# -- Batch compression
+compressionType: snappy
+
 image:
   # -- the image name to use
   name: osskit/dafka-producer
