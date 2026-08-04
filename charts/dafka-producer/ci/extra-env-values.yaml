@@ -1,0 +1,14 @@
+broker: kafka:9092
+
+# every one of these must render as a quoted string, and numbers must keep their
+# integer form - helm parses bare yaml numbers as float64, so a naive `squote`
+# renders 20971520 as 2.097152e+07
+extraEnv:
+  BARE_INT: 20971520
+  QUOTED_INT: '20971520'
+  SMALL_INT: 1024
+  FLOAT: 0.1
+  BOOL: true
+  PLAIN_STRING: gzip
+  NUMERIC_STRING: '0755'
+  EMPTY_STRING: ''

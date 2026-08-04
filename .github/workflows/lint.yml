@@ -1,0 +1,39 @@
+name: Lint
+
+on:
+  pull_request:
+    paths:
+      - 'charts/**'
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.4
+
+      - name: Lint
+        run: helm lint charts/dafka-producer --set broker=kafka:9092
+
+      - name: Render
+        run: helm template test charts/dafka-producer -f charts/dafka-producer/ci/extra-env-values.yaml > rendered.yaml
+
+      - name: Assert extraEnv renders as strings
+        run: |
+          set -euo pipefail
+          for expected in '"20971520"' '"1024"' '"0.1"' '"true"' '"gzip"' '"0755"'; do
+            grep -q "value: ${expected}" rendered.yaml || {
+              echo "missing rendered env value ${expected}"
+              exit 1
+            }
+          done
+          if grep -qE 'value: .*e\+[0-9]' rendered.yaml; then
+            echo "a numeric env value rendered in exponent notation:"
+            grep -E 'value: .*e\+[0-9]' rendered.yaml
+            exit 1
+          fi
