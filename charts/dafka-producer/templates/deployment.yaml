@@ -64,6 +64,10 @@ spec:
             - name: COMPRESSION_TYPE
               value: {{ .Values.compressionType }}
             {{- end }}            
+            {{- range $key, $value := .Values.extraEnv }}
+            - name: {{ $key }}
+              value: {{ $value | squote }}
+            {{- end }}
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}
             - name: MONITORING_SERVER_PORT
