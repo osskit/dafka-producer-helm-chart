@@ -66,7 +66,14 @@ spec:
             {{- end }}            
             {{- range $key, $value := .Values.extraEnv }}
             - name: {{ $key }}
-              value: {{ $value | squote }}
+              {{- if kindIs "invalid" $value }}
+              value: ""
+              {{- else if kindIs "string" $value }}
+              value: {{ $value | quote }}
+              {{- else }}
+              {{- /* helm parses bare yaml numbers as float64, so squote/quote alone would render 20971520 as 2.097152e+07 */}}
+              value: {{ $value | toJson | quote }}
+              {{- end }}
             {{- end }}
             - name: USE_PROMETHEUS
               value: {{ .Values.metrics.enabled | squote }}

@@ -48,7 +48,7 @@ metrics:
 # -- how long a producer should wait for an ack from Kafka in MS (default: 60 seconds)
 maxBlockMS:
 
-# -- extra environment variables to set on the container, for example `KAFKA_PROPERTY_MAX_REQUEST_SIZE: 5242880` to set the producer's `max.request.size`
+# -- extra environment variables to set on the container, for example `KAFKA_PROPERTY_MAX_REQUEST_SIZE: 5242880` to set the producer's `max.request.size`. Numbers and booleans are rendered as strings, so they can be written unquoted
 extraEnv:
 
 auth:

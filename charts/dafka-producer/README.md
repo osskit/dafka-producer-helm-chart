@@ -25,7 +25,7 @@ A Helm Chart for Dafka Producer
 | metrics.enabled | bool | `true` | should prometheus scrape this server |
 | metrics.path | string | `"/metrics"` | a path prometheus should scrape metrics from |
 | maxBlockMS | string | `nil` | how long a producer should wait for an ack from Kafka in MS (default: 60 seconds) |
-| extraEnv | string | `nil` | extra environment variables to set on the container, for example `KAFKA_PROPERTY_MAX_REQUEST_SIZE: 5242880` to set the producer's `max.request.size` |
+| extraEnv | string | `nil` | extra environment variables to set on the container, for example `KAFKA_PROPERTY_MAX_REQUEST_SIZE: 5242880` to set the producer's `max.request.size`. Numbers and booleans are rendered as strings, so they can be written unquoted |
 | auth.enabled | bool | `false` | should use authentication |
 | auth.saslUsername | string | `nil` | sasl username |
 | auth.saslMechanism | string | `"PLAIN"` | sasl mechanism (PLAIN or SCRAM) |
